@@ -31,6 +31,26 @@ There is no window to keep open and no keyboard profile to configure:
 The app starts automatically after login by default. Agent hooks can also launch
 it when needed. After setup, use Codex and Claude normally. The beacon is automatic.
 
+## Let your coding agent install it
+
+Copy and paste this into Codex or Claude on the Mac you want to configure:
+
+```text
+Install NuPhy CapsLock Agent Beacon from
+https://github.com/justintylerm/nuphy-capslock-agent-beacon.
+
+Follow docs/AGENT_INSTALL.md exactly. You may clone the repository into a new
+folder, inspect it, run the dry-run, and complete the documented user-level
+installation without asking me to approve each normal step. Never use sudo,
+weaken macOS security, overwrite unrelated settings, upload local files, print
+private configuration contents, broaden keyboard matching, or run RGB, firmware,
+reset, or hardware-discovery commands. Pause only when I must personally approve
+an Apple permission or trust the Codex hooks, and tell me exactly what to click.
+```
+
+The longer [agent installation guide](docs/AGENT_INSTALL.md) gives the agent a
+fixed safety boundary, an inspection checklist, and a private verification flow.
+
 ## Getting started
 
 ### 1. Check the requirements
