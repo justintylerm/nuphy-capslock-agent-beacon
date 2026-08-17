@@ -1,14 +1,12 @@
 # NuPhy Air75 V3 Caps Lock notification light for Codex and Claude Code
 
-`nuphy-capslock-agent-beacon` turns the Caps Lock light bar on a NuPhy Air75 V3
+`nuphy-capslock-agent-beacon` turns the caps lock light bar on a NuPhy Air75 V3
 into a private, local notification beacon on macOS. The light bar pulses when
-Codex or Claude Code needs approval, presents a plan/chooser question, or
-finishes a response while its app is in the background. They stop when you
-return to the app or begin your next prompt.
+Codex or Claude Code needs approval, presents a plan/question, or
+finishes a response while its app is in the background. It turns off when you
+return to the app.
 
-The release deliberately uses the keyboard's standard Caps Lock LED output, not
-NuPhy's RGB protocol. It makes no network requests, contains no downloaded
-runtime dependencies, does not read keystrokes, and never approves an agent
+It makes no network requests, contains no downloaded runtime dependencies, does not read keystrokes, and never approves an agent
 action.
 
 ![NuPhy Air75 V3 Caps Lock light bar pulsing as an agent notification](docs/media/air75-v3-beacon-demo.gif)
@@ -39,13 +37,7 @@ Copy and paste this into Codex or Claude on the Mac you want to configure:
 Install NuPhy CapsLock Agent Beacon from
 https://github.com/justintylerm/nuphy-capslock-agent-beacon.
 
-Follow docs/AGENT_INSTALL.md exactly. You may clone the repository into a new
-folder, inspect it, run the dry-run, and complete the documented user-level
-installation without asking me to approve each normal step. Never use sudo,
-weaken macOS security, overwrite unrelated settings, upload local files, print
-private configuration contents, broaden keyboard matching, or run RGB, firmware,
-reset, or hardware-discovery commands. Pause only when I must personally approve
-an Apple permission or trust the Codex hooks, and tell me exactly what to click.
+Follow docs/AGENT_INSTALL.md.
 ```
 
 The longer [agent installation guide](docs/AGENT_INSTALL.md) gives the agent a
