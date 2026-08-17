@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added a metadata-stripped animated demo and a plain-English getting-started
+  walkthrough.
+
 ## 0.1.0 - 2026-08-16
 
 - Initial source-only macOS release.

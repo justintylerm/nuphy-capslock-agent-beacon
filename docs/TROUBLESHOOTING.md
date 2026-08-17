@@ -37,7 +37,7 @@ For CLI use, focusing a terminal does not clear the light because the beacon
 does not inspect terminal windows or typing. Submitting the next prompt clears
 it through the agent hook.
 
-## The bars stay inverted
+## The light bar stays inverted
 
 Quit **NuPhy CapsLock Agent Beacon** or disconnect/reconnect the keyboard. The
 output is volatile, so either action ends the beacon's control. Confirm the
