@@ -3,8 +3,8 @@
 `nuphy-capslock-agent-beacon` turns the caps lock light bar on a NuPhy Air75 V3
 into a private, local notification beacon on macOS. The light bar pulses when
 Codex or Claude Code needs approval, presents a plan/question, or
-finishes a response while its app is in the background. It turns off when you
-return to the app.
+finishes a response while its app is in the background. The light bar returns to it's normal state when you
+return to the app and review the agent's response.
 
 It makes no network requests, contains no downloaded runtime dependencies, does not read keystrokes, and never approves an agent
 action.
