@@ -1,4 +1,4 @@
-# NuPhy Air75 V3 Caps Lock notification light for Codex and Claude Code
+# NuPhy Air75 V3 caps lock notification light for Codex and Claude Code
 
 `nuphy-capslock-agent-beacon` turns the caps lock light bar on a NuPhy Air75 V3
 into a private, local notification beacon on macOS. The light bar pulses when
