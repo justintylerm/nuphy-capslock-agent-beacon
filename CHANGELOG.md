@@ -4,6 +4,8 @@
 
 - Added a metadata-stripped animated demo and a plain-English getting-started
   walkthrough.
+- Added a copy-and-paste coding-agent installation prompt with explicit privacy
+  and hardware safety boundaries.
 
 ## 0.1.0 - 2026-08-16
 
