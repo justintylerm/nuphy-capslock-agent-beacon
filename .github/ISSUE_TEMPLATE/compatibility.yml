@@ -1,0 +1,55 @@
+name: Compatibility report
+description: Propose a narrowly verified Air75 V3 connection or layout.
+title: "[Compatibility]: "
+labels: [compatibility]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Read docs/COMPATIBILITY.md first. Never post a keyboard serial, transcript,
+        hook payload, username, account name, or unredacted local path.
+  - type: input
+    id: model
+    attributes:
+      label: Exact keyboard model and layout
+      placeholder: NuPhy Air75 V3 ANSI
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: Firmware version
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Connection
+      options:
+        - USB wired
+        - Bluetooth channel 1
+        - Bluetooth channel 2
+        - Bluetooth channel 3
+        - 2.4 GHz receiver
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Standard Caps Lock LED verification
+      description: Describe the manual test without pasting raw device dumps.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private content, identifiers, serials, and local paths.
+          required: true

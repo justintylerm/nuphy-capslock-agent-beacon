@@ -1,0 +1,57 @@
+name: Bug report
+description: Report a beacon behavior problem without sharing private agent data.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Never attach transcripts, hook payloads, prompts, responses, account
+        names, serial numbers, or unredacted local paths.
+  - type: input
+    id: version
+    attributes:
+      label: Beacon version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Codex
+        - Claude Code
+        - Both
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Keyboard connection
+      options:
+        - USB wired
+        - Bluetooth channel 1
+        - Unsupported or unverified connection
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: Use synthetic descriptions only. Do not paste agent content or logs.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private content, identifiers, serials, and local paths.
+          required: true
