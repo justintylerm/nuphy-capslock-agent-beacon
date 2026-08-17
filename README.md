@@ -11,6 +11,90 @@ NuPhy's RGB protocol. It makes no network requests, contains no downloaded
 runtime dependencies, does not read keystrokes, and never approves an agent
 action.
 
+![NuPhy Air75 V3 Caps Lock side bars pulsing as an agent notification](docs/media/air75-v3-beacon-demo.gif)
+
+_The standard Caps Lock side bars pulse when an agent is waiting for you._
+
+## How it works
+
+There is no window to keep open and no keyboard profile to configure:
+
+1. Codex or Claude Code emits an official local hook event when it needs input
+   or finishes a response.
+2. The included Python hook writes a tiny routing-only marker on your Mac. It
+   does not save the prompt, response, command, or tool data.
+3. The background Swift app sees that marker and alternates the Air75 V3's
+   standard Caps Lock LED bit, making the two frame bars pulse.
+4. Returning to the desktop app or submitting your next CLI prompt clears the
+   marker and restores the real Caps Lock light state.
+
+The app starts automatically after login by default. Agent hooks can also launch
+it when needed. After setup, use Codex and Claude normally—the beacon is automatic.
+
+## Getting started
+
+### 1. Check the requirements
+
+You need:
+
+- macOS 15 or newer;
+- a NuPhy Air75 V3 in USB wired mode or Bluetooth channel 1;
+- Codex and/or Claude Code already installed;
+- Apple's Xcode Command Line Tools.
+
+Check for Apple's Swift compiler:
+
+```sh
+xcrun --find swift
+```
+
+If that command fails, run `xcode-select --install` and complete Apple's prompt.
+
+### 2. Download, review, and install
+
+Nothing is piped from the internet into a shell. Clone the source, preview the
+exact installation plan, and then run it:
+
+```sh
+git clone https://github.com/justintylerm/nuphy-capslock-agent-beacon.git
+cd nuphy-capslock-agent-beacon
+./install.sh --dry-run
+./install.sh
+```
+
+The installer automatically configures whichever supported agents it finds.
+To select them explicitly, use `./install.sh --codex`, `./install.sh --claude`,
+or `./install.sh --codex --claude`.
+
+### 3. Allow the Caps Lock LED connection
+
+Open **System Settings → Privacy & Security → Input Monitoring** and enable
+**NuPhy CapsLock Agent Beacon**. macOS places keyboard LED access in this broad
+permission category even though this app never requests keyboard input reports.
+
+If the app exited while waiting for permission, launch it again from
+`~/Applications/NuPhy CapsLock Agent Beacon.app` or rerun `./install.sh`.
+
+### 4. Trust the Codex hooks
+
+In Codex, enter `/hooks`, review the new user hooks, and trust them. Claude Code
+loads its settings automatically.
+
+You do not need NuPhy's web configurator, a special RGB effect, or an open beacon
+window.
+
+### 5. Try a simple test
+
+1. Ask Codex or Claude a normal question that takes a few seconds to answer.
+2. Switch to another app before the response finishes.
+3. When the final response is ready, the two Caps Lock frame bars should pulse.
+4. Return to the Codex/Claude desktop app, or submit your next CLI prompt. The
+   pulse should stop and the real Caps Lock state should be restored.
+
+Final-response alerts are intentionally suppressed while you are already looking
+at the agent app. Approval and plan/chooser prompts pulse as soon as they appear.
+If the test fails, follow the [troubleshooting checklist](docs/TROUBLESHOOTING.md).
+
 ## What is supported
 
 | Component | Status |
@@ -24,20 +108,7 @@ action.
 | Bluetooth channels 2/3, 2.4 GHz, ISO/JIS layouts | Not yet verified |
 | Other NuPhy models | Intentionally rejected until safely verified |
 
-You also need Apple's Xcode Command Line Tools, which provide the trusted Swift
-compiler and system Python used by the source-only installer. If `xcrun --find
-swift` fails, install them with `xcode-select --install` before continuing.
-
-## Install without piping the internet into a shell
-
-Review the source on GitHub first. Clone it, inspect the local plan, then install:
-
-```sh
-git clone https://github.com/justintylerm/nuphy-capslock-agent-beacon.git
-cd nuphy-capslock-agent-beacon
-./install.sh --dry-run
-./install.sh
-```
+## What the installer changes
 
 The installer:
 
@@ -50,23 +121,11 @@ The installer:
 - optionally adds a user LaunchAgent so the app starts after login;
 - uses no `sudo`, package manager, remote installer, or network call.
 
-If only one agent is installed, it is selected automatically. You can also be
-explicit:
+To disable automatic startup after login while keeping on-demand hook launching:
 
 ```sh
-./install.sh --codex
-./install.sh --claude
 ./install.sh --codex --claude --no-login-item
 ```
-
-After installation:
-
-1. Approve Input Monitoring only for **NuPhy CapsLock Agent Beacon**. macOS uses
-   that permission category for access to a keyboard's output LED even though
-   this app does not request input reports.
-2. In Codex, open `/hooks`, review the installed commands, and trust them.
-3. Leave the keyboard in wired mode or Bluetooth channel 1. No NuPhy web page
-   or RGB configuration is needed.
 
 ## Behavior
 
