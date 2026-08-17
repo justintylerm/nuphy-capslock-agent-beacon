@@ -5,8 +5,7 @@ into a private, local notification beacon on macOS. The light bar pulses when
 Codex or Claude Code needs approval, presents a plan/question, or
 finishes a response while its app is in the background. The light bar returns to it's normal state when you review the agent's response in their native desktop apps.
 
-It makes no network requests, contains no downloaded runtime dependencies, does not read keystrokes, and never approves an agent
-action.
+It makes no network requests, contains no downloaded runtime dependencies, does not read keystrokes, and never approves agent action on your behalf.
 
 ![NuPhy Air75 V3 Caps Lock light bar pulsing as an agent notification](docs/media/air75-v3-beacon-demo.gif)
 
