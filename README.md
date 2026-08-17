@@ -1,19 +1,19 @@
 # NuPhy Air75 V3 Caps Lock notification light for Codex and Claude Code
 
-`nuphy-capslock-agent-beacon` turns the two Caps Lock light bars on a NuPhy
-Air75 V3 into a private, local notification beacon on macOS. The bars pulse when
+`nuphy-capslock-agent-beacon` turns the Caps Lock light bar on a NuPhy Air75 V3
+into a private, local notification beacon on macOS. The light bar pulses when
 Codex or Claude Code needs approval, presents a plan/chooser question, or
 finishes a response while its app is in the background. They stop when you
 return to the app or begin your next prompt.
 
-The release deliberately uses the keyboard's standard Caps Lock LED output—not
+The release deliberately uses the keyboard's standard Caps Lock LED output, not
 NuPhy's RGB protocol. It makes no network requests, contains no downloaded
 runtime dependencies, does not read keystrokes, and never approves an agent
 action.
 
-![NuPhy Air75 V3 Caps Lock side bars pulsing as an agent notification](docs/media/air75-v3-beacon-demo.gif)
+![NuPhy Air75 V3 Caps Lock light bar pulsing as an agent notification](docs/media/air75-v3-beacon-demo.gif)
 
-_The standard Caps Lock side bars pulse when an agent is waiting for you._
+_The standard Caps Lock light bar pulses when an agent is waiting for you._
 
 ## How it works
 
@@ -24,12 +24,12 @@ There is no window to keep open and no keyboard profile to configure:
 2. The included Python hook writes a tiny routing-only marker on your Mac. It
    does not save the prompt, response, command, or tool data.
 3. The background Swift app sees that marker and alternates the Air75 V3's
-   standard Caps Lock LED bit, making the two frame bars pulse.
+   standard Caps Lock LED bit, making the Caps Lock light bar pulse.
 4. Returning to the desktop app or submitting your next CLI prompt clears the
    marker and restores the real Caps Lock light state.
 
 The app starts automatically after login by default. Agent hooks can also launch
-it when needed. After setup, use Codex and Claude normally—the beacon is automatic.
+it when needed. After setup, use Codex and Claude normally. The beacon is automatic.
 
 ## Getting started
 
@@ -87,7 +87,7 @@ window.
 
 1. Ask Codex or Claude a normal question that takes a few seconds to answer.
 2. Switch to another app before the response finishes.
-3. When the final response is ready, the two Caps Lock frame bars should pulse.
+3. When the final response is ready, the Caps Lock light bar should pulse.
 4. Return to the Codex/Claude desktop app, or submit your next CLI prompt. The
    pulse should stop and the real Caps Lock state should be restored.
 
@@ -155,8 +155,8 @@ writes and introduced more failure modes, including a temporarily stuck
 indicator state. The final project excludes every RGB, profile, keymap, macro,
 firmware, and reset command.
 
-The Caps Lock bars are controlled through the standard keyboard LED output that
-macOS already uses for normal Caps Lock indication. Beacon writes are volatile:
+The Caps Lock light bar is controlled through the standard keyboard LED output
+that macOS already uses for normal Caps Lock indication. Beacon writes are volatile:
 they change one output bit, not the keyboard's saved lighting profile or
 firmware. There is no idle write heartbeat. See [Safety](docs/SAFETY.md) for the
 precise hardware boundary and measured tradeoffs.
